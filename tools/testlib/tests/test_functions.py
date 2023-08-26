@@ -285,7 +285,7 @@ BYTECODE_OP_TEST_CASES = [
     """),
     BytecodeOpTestCase(
         name='deep_in_func',
-        used_instructions={'BUILD_LIST', 'LIST_EXTEND', 'INPLACE_ADD'},
+        used_instructions={'BUILD_LIST', 'LIST_EXTEND', 'STORE_FAST', 'LOAD_CONST'},
         unused_instructions={'LOAD_METHOD'},
         text_code=r"""
             def not_used_tmp():
