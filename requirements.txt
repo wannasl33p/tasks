@@ -36,6 +36,7 @@ GitPython==3.1.32
 
 # testing and linting
 flake8==6.1.0
+Flake8-pyproject==1.2.3  # to configure flake8 with pyproject.toml
 ruff==0.0.286
 mypy==1.5.1
 black==23.7.0

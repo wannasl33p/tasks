@@ -46,7 +46,7 @@ $ source shad_env/bin/activate  # замените здесь путь до ме
 ### Q: Локально проходят все тесты, а на сервере ошибка `flake8`/`mypy`
 
 <details><summary><b>A: [под спойлером]</b></summary>
-В первую очередь нужно проверить, что вы запускайте тесты и линтеры с учётом файла конфигурации (`setup.cfg`).  
+В первую очередь нужно проверить, что вы запускайте тесты и линтеры с учётом файла конфигурации (`pyproject.toml`).  
 
 Есть 2 варианта как запустить тесты и линтеры 
 * Можно запускать из корня проекта, тогда файл подцепится автоматически
@@ -57,9 +57,9 @@ $ source shad_env/bin/activate  # замените здесь путь до ме
   ```
 * Можно запускать из любой директории, но нужно указать файл ручками
   ```shell
-  (shad_env)$ python -m flake8 --config ../../setup.cfg task_name
-  (shad_env)$ python -m mypy --config-file ../../setup.cfg task_name
-  (shad_env)$ python -m pytest -c ../../setup.cfg task_name
+  (shad_env)$ python -m flake8 --config ../../pyproject.toml task_name
+  (shad_env)$ python -m mypy --config-file ../../pyproject.toml task_name
+  (shad_env)$ python -m pytest -c ../../pyproject.toml task_name
   ```
 (при уже включённом `venv`)
 </details>
