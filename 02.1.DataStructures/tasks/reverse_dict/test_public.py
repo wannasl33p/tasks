@@ -65,7 +65,7 @@ def test_reverse_dict(t: Case) -> None:
 
     assert answer == t.result
     assert isinstance(answer, dict)
-    assert isinstance(answer, defaultdict), "Please cast your defaultdict to dict in the end"
+    assert not isinstance(answer, defaultdict), "Please cast your defaultdict to dict in the end"
 
 
 def _crappy_solution(dct: tp.Mapping[str, str]) -> dict[str, list[str]]:
