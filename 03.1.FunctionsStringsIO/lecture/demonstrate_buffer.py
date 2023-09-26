@@ -1,9 +1,10 @@
 import sys
 from time import sleep
 
-print('test', end='')
+print('first')
+print('second', end='')
 # uncomment to fix!
 # sys.stdout.flush()
-print('err', file=sys.stderr)
+print('third', file=sys.stderr)
 
-sleep(1)
+sleep(2)
