@@ -28,11 +28,11 @@ TEST_CASES = [
 
 
 def test_banned_functions() -> None:
-    assert not testlib.is_global_used(sum_two_numbers, 'sum')
+    assert not testlib.is_global_used(sum_two_numbers, 'sum'), 'You can not use sum function in the task'
 
 
 def test_docs() -> None:
-    assert testlib.is_function_docstring_exists(sum_two_numbers)
+    assert testlib.is_function_docstring_exists(sum_two_numbers), 'You should not delete function docstring'
 
 
 ###################

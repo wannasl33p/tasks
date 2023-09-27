@@ -9,6 +9,13 @@ from .make_assert import test_check_ctr, ctr_correct_implementation
 ###################
 
 
+def test_clr_used_in_test() -> None:
+    assert testlib.is_global_used(test_check_ctr, 'ctr'), \
+        'To test ctf function you should use ctr function'
+    assert not testlib.is_global_used(test_check_ctr, 'ctr_correct_implementation'), \
+        'Use provided `expected_result` to test, not `ctr_correct_implementation`'
+
+
 def test_docs() -> None:
     assert testlib.is_function_docstring_exists(test_check_ctr)
     assert testlib.is_function_docstring_exists(ctr_correct_implementation)
