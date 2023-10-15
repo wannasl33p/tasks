@@ -53,7 +53,7 @@ class Scorer:
         return '\n'.join([
             '',
             f'Summary score is: {self.score:.2f}',
-            f'Summary score percentage is: {self.percent:.2f}',
+            f'Summary score percentage is: {self.percent:.4f}',
         ])
 
 
