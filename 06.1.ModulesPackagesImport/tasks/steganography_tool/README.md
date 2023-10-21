@@ -36,19 +36,19 @@
 
 ```bash
 # Собрать wheel для библиотеки steganography_tool
-(shad_env)$ pip wheel --wheel-dir 06.1.ModulesPackagesImport/steganography_tool/dist 06.1.ModulesPackagesImport/steganography_tool/
+(shad_env)$ pip wheel --wheel-dir 06.1.ModulesPackagesImport/tasks/steganography_tool/dist 06.1.ModulesPackagesImport/tasks/steganography_tool/
 
 # Посмотреть какие файлы упаковались в wheel
-(shad_env)$ tar --list -f 06.1.ModulesPackagesImport/steganography_tool/dist/steganography_tool-0.0.1-py3-none-any.whl  
+(shad_env)$ tar --list -f 06.1.ModulesPackagesImport/tasks/steganography_tool/dist/steganography_tool-0.0.1-py3-none-any.whl  
 
 # Устанавливаем собранный wheel для steganography_tool
-(shad_env)$ pip install 06.1.ModulesPackagesImport/steganography_tool/ --prefer-binary --force-reinstall --find-links 06.1.ModulesPackagesImport/steganography_tool/dist/
+(shad_env)$ pip install 06.1.ModulesPackagesImport/tasks/steganography_tool/ --prefer-binary --force-reinstall --find-links 06.1.ModulesPackagesImport/tasks/steganography_tool/dist/
 
 # Стал доступен модуль steganography_tool в интерпретаторе
 (shad_env)$ steganography-tool
 
 # Теперь можете запустить тесты, которые используют модуль steganography_tool в импортах
-(shad_env)$ pytest 06.1.ModulesPackagesImport/steganography_tool
+(shad_env)$ pytest 06.1.ModulesPackagesImport/tasks/steganography_tool
 ```
 Причем нужно переустанавливать пакет если вы меняете metadata.
 

@@ -30,11 +30,11 @@
 
 ```bash
 # Устанавливаем библиотеку simple_pass_manager
-(shad_env)$ pip install -e 06.1.ModulesPackagesImport/basic_module --force-reinstall
+(shad_env)$ pip install -e 06.1.ModulesPackagesImport/tasks/basic_module --force-reinstall
 
 # Стал доступен модуль simple_pass_manager в интерпретаторе
 # Теперь можете запустить тесты, которые используют модуль simple_pass_manager в импортах
-(shad_env)$ pytest 06.1.ModulesPackagesImport/basic_module
+(shad_env)$ pytest 06.1.ModulesPackagesImport/tasks/basic_module
 ```
 Причем нужно переустанавливать пакет если вы изменяйте metadata.
 
