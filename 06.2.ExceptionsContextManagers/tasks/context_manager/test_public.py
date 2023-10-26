@@ -59,7 +59,7 @@ def test_supresser_supress() -> None:
     except Exception as e:
         assert False, 'supressed exception raised {}'.format(e)
     else:
-        assert True  # type: ignore
+        pass
 
 
 def test_dumper_stream() -> None:
