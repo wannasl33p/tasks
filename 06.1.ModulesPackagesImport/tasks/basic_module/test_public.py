@@ -85,6 +85,13 @@ def test_setup_style() -> None:
     assert setup_py_n_lines <= 4, 'You should not use `setup.py` in favor of `setup.cfg`'
 
 
+def test_original_file_deleted() -> None:
+    task_dir = Path(__file__).resolve().parent
+
+    original_file = task_dir / 'simple_pass_manager.py'
+    assert not original_file.exists(), 'You should delete original file and make a module'
+
+
 def test_module_metadata() -> None:
     module_name = 'simple_pass_manager'
     module_metadata = metadata.metadata(module_name)
