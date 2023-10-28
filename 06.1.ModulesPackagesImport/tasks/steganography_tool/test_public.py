@@ -5,16 +5,14 @@ from pathlib import Path
 
 def test_modules_installed() -> None:
     try:
-        import PIL
+        import PIL  # noqa: F401
     except ImportError:
-        PIL = None
-    assert PIL, 'Can not find `PIL`. It is required?'
+        assert False, 'Can not find `PIL`. It is required?'
 
     try:
-        import steganography_tool
+        import steganography_tool  # noqa: F401
     except ImportError:
-        steganography_tool = None  # type: ignore
-    assert steganography_tool, 'Can not find `steganography_tool`. It is installed?'
+        assert False, 'Can not find `steganography_tool`. It is installed?'
 
 
 def test_structure() -> None:
