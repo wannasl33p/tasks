@@ -3,6 +3,9 @@ from importlib import metadata
 from pathlib import Path
 
 
+MODULE_NAME = 'steganography_tool'
+
+
 def test_modules_installed() -> None:
     try:
         import PIL  # noqa: F401
@@ -34,7 +37,7 @@ def test_import_module_import() -> None:
 
 
 def test_submodules_wildcard_import() -> None:
-    module = importlib.import_module('steganography_tool')
+    module = importlib.import_module(MODULE_NAME)
     module_dict = module.__dict__
 
     assert '__all__' in module_dict, 'You should limit `import *` via __all__'
@@ -52,12 +55,17 @@ def test_setup_style() -> None:
     setup_py_n_lines = open(setup_py_file.as_posix()).read().count("\n")
     assert setup_py_n_lines <= 4, 'You should use `pyproject.toml` in favor of `setup.py` ' \
                                   '(only dummy `setup.py` allowed)'
+    with open(setup_py_file.as_posix()) as f:
+        assert 'setup()' in f.read(), 'Use dummy `setup.py` file'
 
 
 def test_module_metadata() -> None:
-    module_name = 'steganography_tool'
-    module_metadata = metadata.metadata(module_name)
+    module_metadata = metadata.metadata(MODULE_NAME)
 
+    # Project metadata
     for metadata_field in ['Author-email', 'Summary', 'Version', 'Requires-Python']:
         assert module_metadata[metadata_field] and module_metadata[metadata_field] != 'UNKNOWN', \
             f'You should add {metadata_field} in metadata'
+
+    # Dependencies
+    assert 'Pillow' in module_metadata['Requires-Dist'], 'You should add `Pillow` in requirements (not in build-system)'
