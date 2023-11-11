@@ -70,13 +70,13 @@ def test_keyword_wrong() -> None:
 
 
 def test_positional_default() -> None:
-    def foo(a, b=2, c=3): pass      # type: ignore
+    def foo(a, b=2, c=3, d=4): pass      # type: ignore
     foo = cast(FunctionType, foo)
 
-    assert bind_args(foo, 1) == dict(a=1, b=2, c=3)
-    assert bind_args(foo, 'abc', c=10) == dict(a='abc', b=2, c=10)
+    assert bind_args(foo, 1) == dict(a=1, b=2, c=3, d=4)
+    assert bind_args(foo, 'abc', c=10) == dict(a='abc', b=2, c=10, d=4)
     with pytest.raises(TypeError, match=ERR_MISSING_POS_ARGS):
-        bind_args(foo, b=2, c=3)
+        bind_args(foo, b=2, c=3, d=4)
 
 
 def test_kwonly() -> None:
