@@ -153,11 +153,11 @@ def test_mapper(case: MapCase) -> None:
 
     mapper_result = case.mapper(mapper_data_row)
     assert isinstance(mapper_result, tp.Iterator)
-    assert sorted(mapper_ground_truth_rows, key=key_func) == sorted(mapper_result, key=key_func)
+    assert sorted(mapper_result, key=key_func) == sorted(mapper_ground_truth_rows, key=key_func)
 
     result = ops.Map(case.mapper)(iter(case.data))
     assert isinstance(result, tp.Iterator)
-    assert sorted(case.ground_truth, key=key_func) == sorted(result, key=key_func)
+    assert sorted(result, key=key_func) == sorted(case.ground_truth, key=key_func)
 
 
 @dataclasses.dataclass
@@ -324,11 +324,11 @@ def test_reducer(case: ReduceCase) -> None:
 
     reducer_result = case.reducer(case.reducer_keys, iter(reducer_data_rows))
     assert isinstance(reducer_result, tp.Iterator)
-    assert sorted(reducer_ground_truth_rows, key=key_func) == sorted(reducer_result, key=key_func)
+    assert sorted(reducer_result, key=key_func) == sorted(reducer_ground_truth_rows, key=key_func)
 
     result = ops.Reduce(case.reducer, case.reducer_keys)(iter(case.data))
     assert isinstance(result, tp.Iterator)
-    assert sorted(case.ground_truth, key=key_func) == sorted(result, key=key_func)
+    assert sorted(result, key=key_func) == sorted(case.ground_truth, key=key_func)
 
 
 @dataclasses.dataclass
@@ -551,8 +551,8 @@ def test_joiner(case: JoinCase) -> None:
 
     joiner_result = case.joiner(case.join_keys, iter(joiner_data_left_rows), iter(joiner_data_right_rows))
     assert isinstance(joiner_result, tp.Iterator)
-    assert sorted(joiner_ground_truth_rows, key=key_func) == sorted(joiner_result, key=key_func)
+    assert sorted(joiner_result, key=key_func) == sorted(joiner_ground_truth_rows, key=key_func)
 
     result = ops.Join(case.joiner, case.join_keys)(iter(case.data_left), iter(case.data_right))
     assert isinstance(result, tp.Iterator)
-    assert sorted(case.ground_truth, key=key_func) == sorted(result, key=key_func)
+    assert sorted(result, key=key_func) == sorted(case.ground_truth, key=key_func)
