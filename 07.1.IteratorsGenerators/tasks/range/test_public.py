@@ -66,6 +66,9 @@ def test_access() -> None:
     for i in range(4):
         assert range(2, -2, -1)[i] == Range(2, -2, -1)[i]
 
+    for i in range(-5, 0, -1):  # access by negative index
+        assert range(5)[i] == Range(5)[i]
+
     with pytest.raises(IndexError):
         Range(10, 20, 2)[5]
 
