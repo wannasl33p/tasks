@@ -48,8 +48,9 @@ def test_first_step_win_server(free_port: int) -> None:
             stderr=subprocess.PIPE,
         )
         stdout = run.stdout.decode('utf-8')
+        stderr = run.stderr.decode('utf-8')
 
-        assert run.returncode == 0
+        assert run.returncode == 0, stderr
 
         # check logging works somehow
         assert 'WELCOME' in stdout
@@ -90,8 +91,9 @@ def test_win_after_n_iterations_server(free_port: int) -> None:
             stderr=subprocess.PIPE,
         )
         stdout = run.stdout.decode('utf-8')
+        stderr = run.stderr.decode('utf-8')
 
-        assert run.returncode == 0
+        assert run.returncode == 0, stderr
 
         # check logging works somehow
         assert 'WELCOME' in stdout
@@ -129,8 +131,9 @@ def test_dummy_but_honest_server(free_port: int) -> None:
             stderr=subprocess.PIPE,
         )
         stdout = run.stdout.decode('utf-8')
+        stderr = run.stderr.decode('utf-8')
 
-        assert run.returncode == 0
+        assert run.returncode == 0, stderr
 
         # check logging works somehow
         assert 'WELCOME' in stdout
@@ -176,8 +179,9 @@ def test_slow_waiting_for_quit_server(free_port: int) -> None:
 #             stderr=subprocess.PIPE,
 #         )
 #         stdout = run.stdout.decode('utf-8')
+#         stderr = run.stderr.decode('utf-8')
 #
-#         assert run.returncode == 0
+#         assert run.returncode == 0, stderr
 #
 #         # check logging works somehow
 #         assert 'WELCOME' in stdout
