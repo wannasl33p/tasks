@@ -5,3 +5,4 @@ def find_value(nums: list[int] | range, value: int) -> bool:
     :param value: integer to find
     :return: True if value exists, False otherwise
     """
+    return True if value in nums else False
