@@ -9,6 +9,28 @@ def traverse_dictionary_immutable(
     :param prefix: prefix for key used for passing total path through recursion
     :return: list with pairs: (full key from root to leaf joined by ".", value)
     """
+    result: list[tuple[str, any]] = []
+
+    for key, value in dct.items():
+        current_key = f"{prefix}.{key}" if prefix else key
+        if isinstance(value, dict):
+            result.extend(traverse_dictionary_immutable(value, current_key))
+        else:
+            result.append((current_key, value))
+
+    return result
+
+        
+            
+d = {
+    "a": 1,
+    "b": {
+        "c": 2,
+        "d": 4
+    }
+}
+print(traverse_dictionary_immutable(dct=d))
+
 
 
 def traverse_dictionary_mutable(
