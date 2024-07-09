@@ -12,8 +12,7 @@ def convert_to_common_type(data: list[tp.Any]) -> list[tp.Any]:
     for values in data :
         if bool(values):
             my_list.append(type(values)) 
-
-     
+            
     if list in my_list or tuple in my_list :
         for value in data :
             if type(value) is not list and bool(value) and type(value) is not tuple :
@@ -25,10 +24,10 @@ def convert_to_common_type(data: list[tp.Any]) -> list[tp.Any]:
             else :
                 list_for_return.append([])              
         return list_for_return
-        
+    
     elif str in my_list :
         return [str(value) if bool(value) else '' for value in data]
-    
+
     elif int in my_list or float in my_list :
         if float in my_list :
             return [float(value) if bool(value) else 0.0 for value in data]
@@ -39,7 +38,7 @@ def convert_to_common_type(data: list[tp.Any]) -> list[tp.Any]:
                 return [bool(value) if bool(value) else False for value in data]  
     elif bool in my_list :
         return [bool(value) if bool(value) else False for value in data]
-    
+
     else :
         if 0 in data :
             if None not in data :
@@ -55,11 +54,7 @@ def convert_to_common_type(data: list[tp.Any]) -> list[tp.Any]:
         elif '' in data or None in data :
             return ['' for value in data]
         elif False in data :
-            return [bool(value) for value in data] 
-        
-    
-    
-print(convert_to_common_type([False, False, False]))
+            return [bool(value) for value in data]  
 
 
 

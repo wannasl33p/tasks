@@ -1,3 +1,7 @@
+import re
+from collections import defaultdict
+from collections import Counter
+
 def normalize(
         text: str
         ) -> str:
@@ -6,7 +10,12 @@ def normalize(
     :param text: text to normalize
     :return: normalized query
     """
+    lower_string = text.lower()
 
+    no_number_string = re.sub(r'\d+','',lower_string)
+    no_punc_string = re.sub(r'[^\w\s]','', no_number_string) 
+    return no_punc_string
+    
 
 def get_words(
         query: str
@@ -17,6 +26,8 @@ def get_words(
     :return: filtered and split query by words
     """
 
+    return [word for word in query.split() if len(word)>3 ]
+
 
 def build_index(
         banners: list[str]
@@ -26,6 +37,28 @@ def build_index(
     :param banners: list of banners for indexation
     :return: mapping from word to banners ids
     """
+    
+    new_dict :dict[str, list[int]] = {}
+    
+    i=0
+    
+    print(Counter(banners))
+    
+    for key, value in Counter(banners).items():
+        for j in range(value):
+            if j==0:
+                new_dict[key] = [i]
+            else :
+                new_dict[key]+= [i:=i+1]
+            
+    
+    
+    return new_dict
+
+
+print(build_index(['jopa' , 'hui', 'chlen' , 'chlen' , 'peinis' , 'jopa']))
+        
+    
 
 
 def get_banner_indices_by_query(
