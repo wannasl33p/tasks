@@ -19,6 +19,7 @@ def merge_iterative(lst_a: list[int], lst_b: list[int]) -> list[int]:
 
     return sorted_lst
 
+
 def merge_sorted(lst_a: list[int], lst_b: list[int]) -> list[int]:
     """
     Merge two sorted lists in one sorted list using `sorted`

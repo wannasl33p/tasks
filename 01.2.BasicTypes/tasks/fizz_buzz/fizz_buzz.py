@@ -7,23 +7,14 @@ def get_fizz_buzz(n: int) -> list[int | str]:
     :param n: size of sequence
     :return: list of values.
     """
-    my_list : list[int | str] = []
-    i=0
-    while i<n :
-      if i %3==0 :
+    my_list: list[int | str] = []
+    for i in range(1,n):
+      if i % 15 == 0:
+         my_list.append('FizzBuzz')      
+      elif i % 3 == 0:
          my_list.append('Fizz')
-      elif i%5==0 :
+      elif i % 5 == 0:
          my_list.append('Buzz')
-      elif i%15==0:
-         my_list.append('FizzBuzz')
       else:
          my_list.append(i)
-   
     return my_list
- 
- 
-      
-      
-      
-  
-      

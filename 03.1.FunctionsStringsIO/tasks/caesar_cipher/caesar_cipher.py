@@ -5,10 +5,9 @@ def caesar_encrypt(message: str, n: int) -> str:
     :param n: shift
     :return: encrypted message
     """
-    alphabet_= "abcdefghijklmnopqrstuvwxyz"
-    
-    i = 0
-    result = ""
+    alphabet_ = "abcdefghijklmnopqrstuvwxyz"
+    i: int = 0
+    result: str = ""
 
     while i < len(message):
         if message[i].isalpha():
@@ -23,7 +22,3 @@ def caesar_encrypt(message: str, n: int) -> str:
         i += 1
 
     return result
-            
-
-
-

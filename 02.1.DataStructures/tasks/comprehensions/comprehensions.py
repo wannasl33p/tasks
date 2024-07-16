@@ -17,7 +17,8 @@ def get_unique_page_ids_visited_after_ts(records: list[tp.Mapping[str, tp.Any]],
     :param ts: timestamp
     :return: Unique web pages visited in hit-log after some timestamp
     """
-    return set(record['PageID'] for record in records if record['EventTime']>ts)
+    return set(record['PageID'] for record in records if record['EventTime'] > ts)
+
 
 def get_unique_user_ids_visited_page_after_ts(
         records: list[tp.Mapping[str, tp.Any]],
@@ -29,10 +30,9 @@ def get_unique_user_ids_visited_page_after_ts(
     :param records: records of hit-log
     :param ts: timestamp
     :param page_id: web page identifier
-    
     :return: Unique users visited given web page after some timestamp
     """
-    return set(record['UserID'] for record in records if record['EventTime']>ts and record['PageID']==page_id)
+    return set(record['UserID'] for record in records if record['EventTime'] > ts and record['PageID'] == page_id)
 
 
 def get_events_by_device_type(
@@ -45,7 +45,7 @@ def get_events_by_device_type(
     :param device_type: device typy name to filter by
     :return: filtered events
     """
-    return [record for record in records if record['DeviceType']==device_type]
+    return [record for record in records if record['DeviceType'] == device_type]
 
 
 DEFAULT_REGION_ID = 100500
@@ -59,7 +59,8 @@ def get_region_ids_with_none_replaces_by_default(
     :param records: records of hit-log
     :return: region ids
     """
-    return [record['RegionID'] if record['RegionID']!= None else  DEFAULT_REGION_ID  for record in records]
+    return [record['RegionID'] if record['RegionID'] is not None else DEFAULT_REGION_ID for record in records]
+
 
 def get_region_id_if_not_none(
         records: list[tp.Mapping[str, tp.Any]]
@@ -69,8 +70,7 @@ def get_region_id_if_not_none(
     :param records: records of hit-log
     :return: region ids
     """
-    return [record['RegionID'] for record in records if record['RegionID'] !=None]
-    
+    return [record['RegionID'] for record in records if record['RegionID'] is not None]
 
 
 def get_keys_where_value_is_not_none(r: tp.Mapping[str, tp.Any]) -> list[str]:
@@ -79,7 +79,7 @@ def get_keys_where_value_is_not_none(r: tp.Mapping[str, tp.Any]) -> list[str]:
     :param r: record of hit-log
     :return: keys where values are defined
     """
-    return [key for key, record in r.items() if record!=None]
+    return [key for key, record in r.items() if record is not None]
 
 
 def get_record_with_none_if_key_not_in_keys(
@@ -105,7 +105,8 @@ def get_record_with_key_in_keys(
     :param keys: keys to filter by
     :return: filtered record
     """
-    return{key: record for key , record in r.items() if key in keys}
+    return {key: record for key, record in r.items() if key in keys}
+
 
 def get_keys_if_key_in_keys(
         r: tp.Mapping[str, tp.Any],
