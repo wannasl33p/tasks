@@ -3,22 +3,25 @@ def normalize_path(path: str) -> str:
     :param path: unix path to normalize
     :return: normalized path
     """
-    start_path=path
+    parts = path.split('/')
+    normalized_parts = []
+    for part in parts:
+        if part == '':
+            continue
+        elif part == '.':
+            continue
+        elif part == '..':
+            if normalized_parts:
+                normalized_parts.pop()
+        else:
+            normalized_parts.append(part)
+    normalized_path = '/' + '/'.join(normalized_parts)
 
-    for i in range(len(path)):
-        if i+1<len(path) and path[i]=='.'  and path[i+1]=='.' and len(path[i+2:])!=0 :
-            if path[i+2:]!='/':
-                    path=path[i+2:]
-    while '//' in path :
-        path=path.replace('//','/')
-    if len(path)!=1 and '.' in path:
-        path=path.replace('.', '')
+    return normalized_path
+        
+        
+        
     
-        
-        
-    return path
-            
 
 
-
-print(normalize_path("./bar"))
+print(normalize_path("/bar"))

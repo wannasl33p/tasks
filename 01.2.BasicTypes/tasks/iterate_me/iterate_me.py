@@ -24,11 +24,10 @@ def get_max_element_index(elements: list[int]) -> int | None:
     :param elements: list with integer values
     :return: index of maximum element if exists, None otherwise
     """
-    for i in range(len(elements)):
-        if elements[i] == max(elements):
-            return i
-        else:
-            return None
+    if not elements:
+        return None
+    max_value = max(elements)
+    return elements.index(max_value)
 
 # ====================================================================================================
 
@@ -38,7 +37,7 @@ def get_every_second_element(elements: list[int]) -> list[int]:
     :param elements: list with integer values
     :return: list with each second element of list
     """
-    return elements[::2]
+    return elements[1::2]
 
 # ====================================================================================================
 
@@ -58,11 +57,7 @@ def get_last_three_index(elements: list[int]) -> int | None:
     :param elements: list with integer values
     :return: index of last "3" in the list if exists, None otherwise
     """
-    if None not in elements != 0:
-        x: list[int] = elements.reverse()
-        if 3 in x:
-            return x.index(3)
-    return None
+    return len(elements) - elements[::-1].index(3) - 1 if 3 in elements else None
 
 # ====================================================================================================
 
@@ -83,7 +78,7 @@ def get_min_max(elements: list[int], default: int | None) -> tuple[int | None, i
     :param default: default value to return if elements are empty
     :return: (min, max) of list elements or (default, default) if elements are empty
     """
-    return min(elements), max(elements) if len(elements) != 0 else default, default
+    return min(elements, default=default), max(elements, default=default)
 
 # ====================================================================================================
 
